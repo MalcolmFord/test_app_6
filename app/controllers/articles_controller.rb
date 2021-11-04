@@ -11,14 +11,25 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    @article = Article.new
+  end
 
+  def edit
     
   end
 
   def create
     @article = Article.new(params.require(:article).permit(:title, :description))
     #render plain: @article.inspect
-    @article.save
+    if @article.save
+      flash[:notice] = "You're article was saved successfully"
     redirect_to @article 
+    else 
+      render 'new'
+    end 
+  end
+
+  def update
+    
   end
 end
