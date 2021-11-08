@@ -4,10 +4,9 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    
-    article = Article.find(params[:id])
-    @title = article.title
-    @description = article.description
+    @article = Article.find(params[:id])
+    @title = @article.title
+    @description = @article.description
   end
 
   def new
