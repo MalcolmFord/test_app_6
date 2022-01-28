@@ -7,6 +7,7 @@
         <div class="card" style="width: 18rem;">
           <%= image_tag('home_page.jpg') %>
           <div class="card-body">
+            <p class="card-text"><%= article.user.username if article.user %></p>
             <h5 class="card-title"><%= article.title %></h5>
             <p class="card-text"><%= article.description %></p>
             <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: "Are you sure"}, class:'btn btn-primary'%>

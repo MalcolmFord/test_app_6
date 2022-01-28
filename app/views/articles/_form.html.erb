@@ -1,26 +1,31 @@
-<% if @article.errors.any? %>
-  <h3>Please fix the following errors</h3>
-  <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-      <li>
-        <%= msg %>
-      </li>
+<div class="card" style="width: 18rem;">
+<%= image_tag('home_page.jpg') %>
+  <% if @article.errors.any? %>
+    <h3>Please fix the following errors</h3>
+    <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li>
+          <%= msg %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+   <div class="card-body">  
+    <%= form_with(model: @article, local: true) do |f| %>
+      <p class="card-text">
+        <%= f.label :title%><br/>
+        <%= f.text_field :title%>
+      </p>
+
+      <p class="card-text">
+        <%= f.label :description%><br/>
+        <%= f.text_area :description %>
+      </p>
+
+      <p>
+        <%= f.submit%>
+      </p>
     <% end %>
-  </ul>
-<% end %>
-  
-<%= form_with(model: @article, local: true) do |f| %>
-  <p>
-    <%= f.label :title%><br/>
-    <%= f.text_field :title%>
-  </p>
-
-  <p>
-    <%= f.label :description%><br/>
-    <%= f.text_area :description %>
-  </p>
-
-  <p>
-    <%= f.submit%>
-  </p>
-<% end %>
+  </div>
+</div>
